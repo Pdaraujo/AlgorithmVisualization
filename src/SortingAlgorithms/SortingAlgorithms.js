@@ -28,3 +28,21 @@ function merge(left, right) {
     // We need to concat to the resultArray because there will be one element left over after the while loop
     return resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
 }
+
+export function getMergeSortAnimations(array) {
+    const animations = [];
+  if (array.length <= 1) return array;
+  const auxiliaryArray = array.slice();
+  mergeSortHelper(array, 0, array.length - 1, auxiliaryArray, animations);
+  return animations;
+} 
+
+function mergeSortHelper(
+    mainArray,
+    startIdx,
+    endIdx,
+    auxiliaryArray,
+    animations,
+) {
+    
+}

@@ -40,15 +40,8 @@ export default class SortingVisualizer extends Component {
     }
 
     mergeSort = () => {
-        const arr = this.state.array
-        const jsArray = this.state.array.slice().sort((a, b) => a - b)
-        const mergeArray = getMergeSort(arr);
 
-        console.log(jsArray);
-        console.log(mergeArray);
-
-
-        console.log('Sort: ', this.testSort(jsArray, mergeArray));
+        
     }
 
     quickSort = () => {
@@ -63,7 +56,22 @@ export default class SortingVisualizer extends Component {
         //TODO
     }
 
-    testSort = (array1, array2) => {
+    testAlgorithms = () => {
+        for (let i = 0; i < 100; i++) {
+            const array = [];
+            const bound = this.randomIntFromInterval(i, 1000)
+            for (let i = 0; i < bound; i++) {
+                array.push(this.randomIntFromInterval(-1000, 1000));
+            }
+
+            const jsArray = array.slice().sort((a, b) => a - b)
+            const mergeArray = getMergeSort(array);
+
+            console.log('MergeSort: ', this.arraysAreEqual(jsArray, mergeArray));
+        }
+    }
+
+    arraysAreEqual = (array1, array2) => {
         if (array1.length !== array2.length) {
             return false
         }
@@ -93,6 +101,7 @@ export default class SortingVisualizer extends Component {
                     <button className="button-bar" onClick={this.quickSort}>Quick Sort</button>
                     <button className="button-bar" onClick={this.heapSort}>Heap Sort</button>
                     <button className="button-bar" onClick={this.bubbleSort}>Bubble Sort</button>
+                    <button className="button-bar" onClick={this.testAlgorithms}>Test Algorithms</button>
                 </div>
             </div>
         )
